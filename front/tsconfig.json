@@ -1,0 +1,32 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ], // ブラウザ環境の型を追加
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
+    // 型定義の解決
+    "types": [],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // 厳格なチェック（小川さんのスタイルに合う堅牢な設定）
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedIndexedAccess": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleDetection": "force",
+    "sourceMap": true,
+    "declaration": true
+  },
+  "include": [
+    "src"
+  ]
+}
