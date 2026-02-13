@@ -11,10 +11,9 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
-
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = { "https://stopwatch-front.onrender.com", "http://localhost:5173" })
 public class UserController {
 
     @Autowired
@@ -52,19 +51,19 @@ public class UserController {
 
     // @PostMapping("/auth/login")
     // public ResponseEntity<?> login(@RequestBody User user) {
-    //     try {
-    //         User newUser = userService.login(user);
-    //         return ResponseEntity.ok(newUser);
-    //     } catch (RuntimeException e) {
-    //         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-    //     }
+    // try {
+    // User newUser = userService.login(user);
+    // return ResponseEntity.ok(newUser);
+    // } catch (RuntimeException e) {
+    // return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+    // }
     // }
 
     @PostMapping("/auth/login")
     public Map<String, Object> login(@RequestBody User userRequest) {
         // 既存のログイン処理（パスワード検証）
         User user = userService.login(userRequest);
-        
+
         // JWTの生成
         String token = jwtUtil.generateToken(user.getUserId(), user.getUserName());
 
@@ -73,7 +72,7 @@ public class UserController {
         response.put("userId", user.getUserId());
         response.put("userName", user.getUserName());
         response.put("token", token); // これをフロントに渡す
-        
+
         return response;
     }
 }
